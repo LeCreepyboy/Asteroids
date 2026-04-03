@@ -47,13 +47,14 @@ def main():
 
         updatable.update(dt)
 
+        #collition loop
         for asteroid in asteroids:
             if asteroid.collides_with(player) == True:
                 log_event("player_hit")
                 print("Game over!")  
                 sys.exit() 
             for shot in shots:
-                if asteroid.collides_with(shot) == True:
+                if asteroid.shot_at(shot.tip_position) == True:
                     log_event("asteroid_shot")
                     asteroid.split()
                     shot.kill()

@@ -26,3 +26,5 @@ class CircleShape(pygame.sprite.Sprite):
         distance = pygame.Vector2.distance_to(self.position, other.position)
         if distance <= radiuses:
             return True
+        
+    

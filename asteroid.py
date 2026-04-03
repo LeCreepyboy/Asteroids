@@ -14,6 +14,11 @@ class Asteroid(CircleShape):
     def update(self, dt):
         self.position += (self.velocity * dt)
 
+    def shot_at(self, shot_tip):
+        distance = self.position.distance_to(shot_tip)
+        if distance <= self.radius:
+            return True
+
     def split(self):
         self.kill()
         if self.radius <= ASTEROID_MIN_RADIUS:
@@ -27,3 +32,5 @@ class Asteroid(CircleShape):
         asteroid2 = Asteroid(self.position[0], self.position[1], new_radius)
         asteroid1.velocity = vector1 * 1.2
         asteroid2.velocity = vector2 * 1.2
+
+    
